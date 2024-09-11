@@ -5,18 +5,26 @@ on:
       - main
 
 jobs:
-  test:
-    name: Run flutter test and analyze
+  analyze_and_fix:
     runs-on: ubuntu-latest
+
     steps:
+      # Faz o checkout do código do repositório
       - uses: actions/checkout@v2
-      - uses: actions/setup-java@v1
         with:
-          java-version: "17.x"
-      - uses: subosito/flutter-action@v2
+          ref: ${{ github.head_ref }}
+
+      # Configura o SDK Flutter
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.13.5'
-      - run: flutter pub get
-      - run: flutter pub run build_runner build --delete-conflicting-outputs
-      - run: flutter analyze
+          flutter-version: "3.13.1" # Especifique a versão do Flutter aqui. Remova essa linha se quiser a versão estável mais recente.
+
+      # Instala as dependências do Flutter
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Runner Files Generation
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
       - run: flutter test
