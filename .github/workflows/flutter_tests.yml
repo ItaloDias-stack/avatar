@@ -19,13 +19,13 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.13.1" # Especifique a versão do Flutter aqui. Remova essa linha se quiser a versão estável mais recente.
-
+      - name: Setup .env
+        run: cp .env.example .env.staging && cp .env.example .env.production
       # Instala as dependências do Flutter
       - name: Install dependencies
         run: flutter pub get
 
       - name: Build Runner Files Generation
         run: flutter pub run build_runner build --delete-conflicting-outputs
-      - name: Setup .env
-        run: cp .env.example .env.staging && cp .env.example .env.production
+      
       - run: flutter test
