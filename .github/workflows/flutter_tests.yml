@@ -5,7 +5,7 @@ on:
       - main
 
 jobs:
-  flutter_test:
+  test:
     name: Run flutter test and analyze
     runs-on: ubuntu-latest
     steps:
