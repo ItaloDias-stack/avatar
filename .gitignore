@@ -50,3 +50,6 @@ app.*.map.json
 .env.production
 .env
 /.fvm/flutter_sdk
+
+# FVM Version Cache
+.fvm/
