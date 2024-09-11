@@ -10,6 +10,6 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   test('Counter increments smoke test', () {
     var i = 0;
-    expect(i, equals(1));
+    expect(i, equals(2));
   });
 }
