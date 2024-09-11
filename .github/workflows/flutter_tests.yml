@@ -26,5 +26,6 @@ jobs:
 
       - name: Build Runner Files Generation
         run: flutter pub run build_runner build --delete-conflicting-outputs
-
+      - name: Setup .env
+        run: cp .env.example .env.staging && cp .env.example .env.production
       - run: flutter test
